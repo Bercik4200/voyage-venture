@@ -1,34 +1,87 @@
 .nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 40px;
-    background-color: #ffffff;
-    border-bottom: 1px solid #eaeaea;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-  }
-  
-  .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #0070f3;
-  }
-  
-  .menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #eaeaea;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #0070f3;
+}
+
+.menu {
+
     list-style: none;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background: white;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+  
+    /* animacja */
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+  
+    z-index: 1001;
+}
+.menu.open {
+    max-height: 300px;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+.menu li a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.menu li a:hover {
+  color: #0070f3;
+}
+
+.burger {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 1100;
+  user-select: none;
+}
+
+/* === MOBILE === */
+@media (max-width: 768px) {
+  .menu {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: white;
+    gap: 10px;
+    padding: 20px;
+    display: none;
+  }
+
+  .menu.open {
     display: flex;
-    gap: 20px;
   }
-  
-  .menu li a {
-    color: #333;
-    text-decoration: none;
-    font-weight: 500;
+
+  .burger {
+    display: block;
   }
-  
-  .menu li a:hover {
-    color: #0070f3;
-  }
-  
+}
